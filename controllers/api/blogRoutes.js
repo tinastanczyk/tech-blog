@@ -16,11 +16,11 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // update blog post
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   
   try {
     const blogData = await Blog.update(
-      {title = req.body.title},{where: {id: req.params.id}}
+      {title: req.body.title},{where: {id: req.params.id}}
     );
     res.status(200).json(blogData);
   } catch (err) {
