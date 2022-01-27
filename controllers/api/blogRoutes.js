@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, Comment } = require('../../models');
+const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -16,7 +16,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // update blog post
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   
   try {
     const blogData = await Blog.update(
@@ -28,5 +28,7 @@ router.put('/:id', (req, res) => {
   }
     
 });
+
+
 
 module.exports = router;
