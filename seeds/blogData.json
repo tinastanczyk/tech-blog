@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Hummus is God",
+    "content": "I really love hummus",
+    "user_id": 1
+  },{
+    "title": "Tahziki Sauce and Cucumbers",
+    "content": "I really love greek yogurt",
+    "user_id": 1
+  },{
+    "title": "Bones",
+    "content": "I really love bones",
+    "user_id": 2
+  },{
+    "title": "Treats",
+    "content": "I really love treats",
+    "user_id": 2
+  },{
+    "title": "Node.js",
+    "content": "I really love node.js",
+    "user_id": 3
+  },{
+    "title": "MySQL",
+    "content": "I really love databases",
+    "user_id": 3
+  }
+]

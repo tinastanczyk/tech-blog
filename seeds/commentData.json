@@ -1,0 +1,27 @@
+[
+  {
+    "text": "I love Israeli food",
+    "user_id": 1,
+    "blog_id": 1
+  },{
+    "text": "I love Israeli hummus too",
+    "user_id": 3,
+    "blog_id": 1
+  },{
+    "text": "I like bone broth",
+    "user_id": 2,
+    "blog_id": 2
+  },{
+    "text": "Chocolate is my favorite treat",
+    "user_id": 1,
+    "blog_id": 4
+  },{
+    "text": "I love Node too",
+    "user_id": 1,
+    "blog_id": 5
+  },{
+    "text": "Ruff",
+    "user_id": 2,
+    "blog_id": 6
+  }
+]
