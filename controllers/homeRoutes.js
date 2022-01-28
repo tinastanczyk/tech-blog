@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     // Get all blog posts and JOIN with user data
     const blogData = await Blog.findAll({
@@ -10,6 +10,10 @@ router.get('/', async (req, res) => {
         {
           model: User,
           attributes: ['name'],
+        },
+        {
+          model: Comment,
+          attributes: ['text', 'user_id'],
         },
       ],
     });
@@ -27,7 +31,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/blog/:id', async (req, res) => {
+router.get('/blog/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       include: [
@@ -35,9 +39,13 @@ router.get('/blog/:id', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
+        {
+          model: Comment,
+          attributes: ['text', 'user_id'],
+        },
       ],
     });
-    // res.status(200).json(blogData);
+    //res.status(200).json(blogData);
 
     const blogPost = blogData.get({ plain: true });
 
@@ -50,6 +58,7 @@ router.get('/blog/:id', async (req, res) => {
   }
 });
 
+
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
@@ -59,12 +68,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
       include: [{ model: Blog }],
     });
     // res.status(200).json(userData);
-    const user = userData.get({ plain: true });
+    // const user = userData.get({ plain: true });
 
-    res.render('dashboard', {
-      ...user,
-      logged_in: true
-    });
+    // res.render('dashboard', {
+    //   ...user,
+    //   logged_in: true
+    // });
   } catch (err) {
     res.status(500).json(err);
   }

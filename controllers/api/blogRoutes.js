@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -20,7 +20,7 @@ router.put('/:id', withAuth, async (req, res) => {
   
   try {
     const blogData = await Blog.update(
-      {title: req.body.title},{where: {id: req.params.id}}
+      {title: req.body.title, content: req.body.content},{where: {id: req.params.id}}
     );
     res.status(200).json(blogData);
   } catch (err) {
