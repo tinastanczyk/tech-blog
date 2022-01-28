@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all blog posts and JOIN with user data
     const blogData = await Blog.findAll({
       include: [
         {
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-
+    // res.status(200).json(blogData);
     // Serialize data so the template can read it
     const blogPosts = blogData.map((blogPost) => blogPost.get({ plain: true }));
 
@@ -37,6 +37,7 @@ router.get('/blog/:id', async (req, res) => {
         },
       ],
     });
+    // res.status(200).json(blogData);
 
     const blogPost = blogData.get({ plain: true });
 
@@ -57,7 +58,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Blog }],
     });
-
+    // res.status(200).json(userData);
     const user = userData.get({ plain: true });
 
     res.render('dashboard', {
