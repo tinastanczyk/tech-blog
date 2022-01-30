@@ -20,7 +20,7 @@
             <ul class="left hide-on-med-and-down">
               {{#if logged_in}}
               <li><a href="/dashboard">dashboard</a></li>
-              <li id="logout">logout</li>
+              <li class="logout">logout</li>
               {{else}}
               <li><a href="/login">Log In</a></li>
               <li><a href="/signup">Sign Up</a></li>
@@ -31,7 +31,7 @@
         <ul class="sidenav" id="mobile-demo">
           {{#if logged_in}}
             <li><a href="/dashboard">dashboard</a></li>
-            <li id="logout">Log Out</li>
+            <li class="logout">Log Out</li>
           {{else}}
             <li><a href="/login">Log In</a></li>
             <li><a href="/signup">Sign Up</a></li>
