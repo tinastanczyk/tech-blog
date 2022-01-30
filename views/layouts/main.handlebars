@@ -4,29 +4,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Blog</title>
-    <link rel="stylesheet" href="/css/jass.css" />
-    <link rel="stylesheet" href="/css/style.css" />
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/jass.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <div>
   <body>
-    <header>
-<nav>
-    <div class="nav-wrapper">
-      <a href="/homepage" class="brand-logo right">Tech Blog</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        {{#if logged_in}}
-        <li><a href="/dashboard">dashboard</a></li>
-        <li id="logout">Log Out</li>
-        {{else}}
-        <li><a href="/login">Log In</a></li>
-        <li><a href="/signup">Sign Up</a></li>
-        {{/if}}
-      </ul>
-    </div>
-  </nav>
-</header>
+    <header class="display-flex justify-space-between align center">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="/homepage" class="brand-logo right">Tech Blog</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+              {{#if logged_in}}
+              <li><a href="/dashboard">dashboard</a></li>
+              <li id="logout">logout</li>
+              {{else}}
+              <li><a href="/login">Log In</a></li>
+              <li><a href="/signup">Sign Up</a></li>
+              {{/if}}
+            </ul>
+          </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+          {{#if logged_in}}
+            <li><a href="/dashboard">dashboard</a></li>
+            <li id="logout">Log Out</li>
+          {{else}}
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+            {{/if}}
+        </ul>
+    </header>
 <main>
   {{{body}}}
 </main>
@@ -39,5 +50,11 @@
 {{/if}}
 <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var side = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(side)
+      });
+    </script>
   </body>
 </html>
